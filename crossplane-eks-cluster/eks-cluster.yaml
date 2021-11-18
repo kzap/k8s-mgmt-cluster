@@ -1,0 +1,16 @@
+apiVersion: mydev.org/v1alpha1
+kind: ClusterClaim
+metadata:
+  name: kzap-eks
+  namespace: eks-cluster
+  labels:
+    cluster-owner: kzap
+spec:
+  id: kzap-eks
+  compositionSelector:
+    matchLabels:
+      provider: aws
+      cluster: eks
+  parameters:
+    nodeSize: small
+    minNodeCount: 3
