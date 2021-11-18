@@ -26,3 +26,27 @@ This sets up a local Kubernetes cluster using KinD (Kubernetes in Docker) and in
     ```sh
     kubectl apply -k ./argocd
     ```
+
+- Create `secret` to contain AWS Credentias (these credentials will have to be close to Admin as you need to create many AWS resources)
+
+    ```sh
+    # Replace `[...]` with your access key ID`
+    export AWS_ACCESS_KEY_ID=[...]
+
+    # Replace `[...]` with your secret access key
+    export AWS_SECRET_ACCESS_KEY=[...]
+
+    # Create a temporary file to hold the credentials
+    echo "[default]
+    aws_access_key_id = $AWS_ACCESS_KEY_ID
+    aws_secret_access_key = $AWS_SECRET_ACCESS_KEY
+    " > ./aws-creds.conf
+
+    # Create a Kubernetes secret using this file
+    kubectl --namespace crossplane-system \
+        create secret generic aws-creds \
+        --from-file creds=./aws-creds.conf
+
+    # Delete this temp file
+    rm ./aws-creds.conf
+    ```

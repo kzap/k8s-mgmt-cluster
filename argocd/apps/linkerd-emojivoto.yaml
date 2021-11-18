@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     path: linkerd/emojivoto
-    repoURL: https://github.com/kzap/k8s-local.git
+    repoURL: https://github.com/kzap/k8s-mgmt-cluster.git
   syncPolicy:
     automated: {}
     syncOptions: # Sync options which modifies sync behavior
