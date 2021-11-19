@@ -1,4 +1,4 @@
-# Local KinD Kubernetes Setup w/ ArgoCD
+# Local KinD Management Cluster w/ ArgoCD
 
 This sets up a local Kubernetes cluster using KinD (Kubernetes in Docker) and installs ArgoCD and uses it to sync the following applications onto the cluster:
 
@@ -6,6 +6,9 @@ This sets up a local Kubernetes cluster using KinD (Kubernetes in Docker) and in
 - nginx-ingress
 - cert-manager
 - linkerd
+- crossplane
+
+It then allows you to create AWS resources using Crossplane such as an entire EKS cluster as shown below.
 
 ## Getting Started
 
@@ -49,4 +52,17 @@ This sets up a local Kubernetes cluster using KinD (Kubernetes in Docker) and in
 
     # Delete this temp file
     rm ./aws-creds.conf
+    ```
+
+- Create a AWS EKS Cluster using Crossplane by applying the `eks-cluster.yaml` or `eks-cluster-medium.yaml`. This is a slightly modified version of @vfaric's code found [here](https://github.com/vfarcic/devops-toolkit-crossplane/tree/master/crossplane-config).
+
+    ```sh
+    kubectl apply -f ./crossplane-eks-cluster/eks-cluster.yaml
+    kubectl apply -f ./crossplane-eks-cluster/eks-cluster-medium.yaml
+    ```
+
+- Observe the creation of the resources:
+
+    ```sh
+    kubectl get managed,compositecluster,clusterclaim
     ```
