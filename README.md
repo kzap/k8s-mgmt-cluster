@@ -54,7 +54,7 @@ It then allows you to create AWS resources using Crossplane such as an entire EK
     rm ./aws-creds.conf
     ```
 
-- Create a AWS EKS Cluster using Crossplane by applying the `eks-cluster.yaml` or `eks-cluster-medium.yaml`. This is a slightly modified version of @vfarcic's code found [here](https://github.com/vfarcic/devops-toolkit-crossplane/tree/master/crossplane-config).
+- Create a AWS EKS Cluster using Crossplane by applying the `eks-cluster.yaml` or `eks-cluster-medium.yaml`. This is a slightly modified version of [@vfarcic](https://github.com/vfarcic)'s code found [here](https://github.com/vfarcic/devops-toolkit-crossplane/tree/master/crossplane-config).
 
     ```sh
     kubectl apply -f ./crossplane-eks-cluster/eks-cluster.yaml
