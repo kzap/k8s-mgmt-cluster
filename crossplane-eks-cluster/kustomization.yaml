@@ -6,4 +6,3 @@ resources:
 - aws-provider-config.yaml
 - definition-k8s.yaml
 - composition-eks.yaml
-#- eks-xr.yaml

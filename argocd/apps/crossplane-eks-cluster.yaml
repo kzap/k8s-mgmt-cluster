@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: crossplane-eks-cluster
+  namespace: argocd
+spec:
+  destination:
+    namespace: eks-cluster
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: crossplane-eks-cluster
+    repoURL: https://github.com/kzap/k8s-mgmt-cluster.git
+  syncPolicy:
+    automated: {}
+    syncOptions: # Sync options which modifies sync behavior
+    - CreateNamespace=true # Namespace Auto-Creation ensures that namespace specified as the application destination exists in the destination cluster.

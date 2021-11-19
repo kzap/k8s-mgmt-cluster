@@ -12,3 +12,4 @@ resources:
 - apps/linkerd.yaml
 - apps/linkerd-emojivoto.yaml
 - apps/crossplane.yaml
+- apps/crossplane-eks-cluster.yaml
